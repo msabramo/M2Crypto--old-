@@ -1,0 +1,9 @@
+*.pyc
+*.so
+*.egg-info
+*.egg
+.tox
+build
+dist
+SWIG/*.py
+SWIG/*.c
