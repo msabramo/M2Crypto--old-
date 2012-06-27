@@ -1,0 +1,16 @@
+language: python
+
+python:
+  - 2.6
+  - 2.7
+
+before_install:
+  # Ubuntu removes SSLv2 support from their libssl packages
+  # We need to patch M2Crypto to not try to use it
+  - curl https://raw.github.com/gist/2831510/2f149b8d95a1a5c6e85c8f5b67102edc6ca82798/m2crypto-0.21.1~nosslv2.diff | patch -p0
+
+install:
+  - sudo apt-get install swig libssl-dev libssl0.9.8
+  - python setup.py install
+
+script: python setup.py test
